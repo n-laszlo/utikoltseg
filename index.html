@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+</head>
+<body>
+    <script>
+
+function szamit()
+{
+    var a = document.getElementById("norma");
+    var fogyasztasi_norma  = a.value;
+    var b = document.getElementById("egysegar");
+    var uzemanyagegysegar  = b.value;
+    var c = document.getElementById("tavolsag");
+    var megtett_kilometer  = c.value;
+
+    var utikoltseg= Number(parseFloat((fogyasztasi_norma))) * Number(uzemanyagegysegar) * Number(megtett_kilometer) /100;
+    document.getElementById("uk").innerHTML=utikoltseg +" Ft";
+
+    var amortizacio= 15 * Number(megtett_kilometer);
+    document.getElementById("am").innerHTML=amortizacio +" Ft";
+
+    var osszesen= utikoltseg+amortizacio;
+    document.getElementById("oek").innerHTML=osszesen +" Ft";
+}
+
+    </script>
+
+
+    <h1>Utiköltség-elszámolás</h1>
+
+    <h3>Személyes adatok</h3>
+    <p>Név: <input type="text" id="nev"></p>
+    <p>Lakcím:  <input type="text" id="lakcim"> </p>
+    <p>Születési dátum:  <input type="date" id="datum"></p>
+
+    <h3>Gépjármű- és üzemanyagadatok</h3>
+    <p>Gépjármű gyártmánya, típusa: <input type="text" id="tipus"></p>
+    <p>Üzemanyag fajtája:  
+        <select name="uzemanyagfajta" id="uzemanyagfajta">
+        <option value="benzin">Benzin</option>
+        <option value="gazolaj">Gázolaj</option>
+        </select>
+    </p>
+    <p>Fogyasztási norma: 
+        <select name="norma" id="norma">
+            <option value="7,6">1000 cm3-ig 7,6 l/100km</option>
+            <option value="8,6">1001-1500 cm3 között 8,6 l/100km</option>
+            <option value="9,5">1501-2000 cm3 között 9,5 l/100km</option>
+            <option value="11,4">2001-3000 cm3 között 11,4 l/100km</option>
+            <option value="13,3">3001 cm3 fölött 13,3 l/100km</option>
+
+            <option value="5,7">1500 cm3-ig 5,7 l/100km</option>
+            <option value="6,7">1501-2000 cm3 között 6,7 l/100km</option>
+            <option value="7,6">2001-3000 cm3 között 7,6 l/100km</option>
+            <option value="9,5">3001 cm3 fölött 9,5 l/100km</option>
+            </select>
+    </p>
+    <p>Utazás dátuma: <input type="date" id="utdatum"></p>
+    <p>Üzemanyag egységára: <input type="number" id="egysegar"> Ft/l</p>
+
+    <h3>A megtett út adatai:</h3>
+    <p>Kiindulási hely: <input type="text" id="hely"></p>
+    <p>Úticél:  <input type="text" id="uticel"> </p>
+    <p>További úticél:  <input type="text" id="tovabbiuticel"> </p>
+    <p>Összesen megtett távolság <br> Google maps alapján: <input type="number" id="tavolsag"> km</p>
+    
+    <input type="button" id="szamit" value="Ellenörzés és számítás" onClick="szamit()">
+
+    <p>Utiköltség: <span id="uk"></span></p>
+    <p>Amortizáció: <span id="am"></span></p>
+    <p>Összesen elszámolható költség: <span id="oek"></span></p>
+</body>
+</html>
