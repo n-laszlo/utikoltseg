@@ -8,10 +8,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
+    
     <script>
 
 function szamit()
 {
+    if(document. getElementById("nev").value.length == 0 
+    || document. getElementById("lakcim").value.length == 0
+    || document. getElementById("datum").value.length == 0
+    || document. getElementById("tipus").value.length == 0
+    || document. getElementById("uzemanyagfajta").value.length == 0
+    || document. getElementById("norma").value.length == 0
+    || document. getElementById("utdatum").value.length == 0
+    || document. getElementById("egysegar").value.length == 0
+    || document. getElementById("hely").value.length == 0
+    || document. getElementById("uticel").value.length == 0
+    || document. getElementById("tovabbiuticel").value.length == 0
+    || document. getElementById("tavolsag").value.length == 0
+    )
+    {
+    alert("Hiba! Nincs minden adat kitöltve")
+    }
+    else
+    {
+
     var a = document.getElementById("norma");
     var fogyasztasi_norma  = a.value;
     var b = document.getElementById("egysegar");
@@ -27,10 +47,13 @@ function szamit()
 
     var osszesen= utikoltseg+amortizacio;
     document.getElementById("oek").innerHTML=osszesen +" Ft";
+
+    document.gomb.nyomtat.disabled = false;
+
+    }
 }
 
     </script>
-
 
     <h3>Utiköltség-elszámolás</h3>
 
@@ -138,6 +161,12 @@ function szamit()
         <div class="col-1"></div>
         <div class="col-5">Összesen elszámolható költség: </div>
         <span id="oek"></span></div>
+        
+<form name="gomb">
+    <div class="row p-1">
+        <div class="col-6"></div>
+        <input type='button' id="nyomtat" value="Nyomtatás" onclick="window.print()" ... disabled> </div>
 
+</form>
 </body>
 </html>
